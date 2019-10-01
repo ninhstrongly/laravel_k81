@@ -13,6 +13,9 @@ class ProductController extends Controller
     public function getAddProduct(){
         return view('backend.product.addproduct');
     }
+    public function postAddProduct(AddProductRequest $r){
+        
+    }
     public function getEditProduct(){
         return view('backend.product.editproduct');
     }

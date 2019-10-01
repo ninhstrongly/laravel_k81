@@ -32,30 +32,36 @@
 									<div class="form-group">
 										<label for="fname">Họ & Tên</label>
 										<input type="text" name="full" class="form-control" placeholder="Full Name">
+										{{ showError($errors,'full') }}
 									</div>
+									
 								</div>
-								{{ showError($errors,'full') }}
+								
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="fname">Địa chỉ</label>
 										<input type="text" name="address" class="form-control"
+										
 											placeholder="Nhập địa chỉ của bạn">
+											{{ showError($errors,'address') }}
 									</div>
 								</div>
-								{{ showError($errors,'address') }}
+								
 								<div class="form-group">
 									<div class="col-md-6">
 										<label for="email">Địa chỉ email</label>
 										<input type="email" name="email" class="form-control"
 											placeholder="Ex: youremail@domain.com">
+											{{ showError($errors,'email') }}
 									</div>
-									{{ showError($errors,'email') }}
+									
 									<div class="col-md-6">
 										<label for="Phone">Số điện thoại</label>
 										<input type="text" name="phone" class="form-control"
 											placeholder="Ex: 0123456789">
+											{{ showError($errors,'phone') }}
 									</div>
-									{{ showError($errors,'phone') }}
+									
 								</div>
 								<div class="form-group">
 									<div class="col-md-12">

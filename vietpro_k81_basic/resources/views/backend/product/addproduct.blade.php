@@ -10,72 +10,74 @@
         </div>
         <!--/.row-->
         <div class="row">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
+                @csrf
                     <div class="col-xs-6 col-md-12 col-lg-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">Thêm sản phẩm</div>
                                 <div class="panel-body">
                                     <div class="row" style="margin-bottom:40px">
                                          
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <label>Danh mục</label>
-                                                        <select name="category" class="form-control">
-                                                            <option value='1' selected>Nam</option>
-                                                            <option value='3'>---|Áo khoác nam</option>
-                                                            <option value='2'>Nữ</option>
-                                                            <option value='4'>---|Áo khoác nữ</option>
-                                                        </select>
-                                                    </div>
-                                                    {{ showError($errors,'category') }}
-                                                    <div class="form-group">
-                                                        <label>Mã sản phẩm</label>
-                                                        <input type="text" name="code" class="form-control" value="{{ old('code') }}">
-                                                    </div>
-                                                    {{ showError($errors,'code') }}
-                                                    <div class="form-group">
-                                                        <label>Tên sản phẩm</label>
-                                                        <input type="text" name="name" class="form-control" value="{{ old('name') }}>
-                                                    </div>
-                                                    {{ showError($errors,'name') }}
-                                                    <div class="form-group">
-                                                        <label>Giá sản phẩm (Giá chung)</label>
-                                                        <input type="number" name="price" class="form-control" value="{{ old('price') }}>
-                                                    </div>
-                                                    {{ showError($errors,'price') }}
-                                                    <div class="form-group">
-                                                        <label>Sản phẩm có nổi bật</label>
-                                                        <select name="featured" class="form-control">
-                                                            <option value="0">Không</option>
-                                                            <option value="1">Có</option>
-                                                        </select>
-                                                    </div>
-                                                    {{ showError($errors,'featured') }}
-                                                    <div class="form-group">
-                                                        <label>Trạng thái</label>
-                                                        <select name="state" class="form-control">
-                                                            <option value="1">Còn hàng</option>
-                                                            <option value="0">Hết hàng</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                {{ showError($errors,'state') }}
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Ảnh sản phẩm</label>
-                                                        <input id="img" type="file" name="img" class="form-control hidden"
-                                                            onchange="changeImg(this)">
-                                                        <img id="avatar" class="thumbnail" width="100%" height="350px" src="img/import-img.png">
-                                                    </div>
-                                                </div>
-                                                {{ showError($errors,'img') }}
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>Thông tin</label>
-                                                        <textarea name="info" style="width: 100%;height: 100px;"></textarea>
-                                                    </div>
-                                                 </div>
-                                                 {{ showError($errors,'info') }}
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label>Danh mục</label>
+                                            <select name="category" class="form-control">
+                                                <option value='1' selected>Nam</option>
+                                                <option value='3'>---|Áo khoác nam</option>
+                                                <option value='2'>Nữ</option>
+                                                <option value='4'>---|Áo khoác nữ</option>
+                                            </select>
+                                        </div>
+                                        {{ showError($errors,'category') }}
+                                        <div class="form-group">
+                                            <label>Mã sản phẩm</label>
+                                            <input type="text" name="code" class="form-control" value="{{ old('code') }}">
+                                        </div>
+                                        {{ showError($errors,'code') }}
+                                        <div class="form-group">
+                                            <label>Tên sản phẩm</label>
+                                            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+                                        </div>
+                                        {{ showError($errors,'name') }}
+                                        <div class="form-group">
+                                            <label>Giá sản phẩm (Giá chung)</label>
+                                            <input type="number" name="price" class="form-control" value="{{ old('price') }}">
+                                        </div>
+                                        {{ showError($errors,'price') }}
+                                        <div class="form-group">
+                                            <label>Sản phẩm có nổi bật</label>
+                                            <select name="featured" class="form-control">
+                                                <option value="0">Không</option>
+                                                <option value="1">Có</option>
+                                            </select>
+                                        </div>
+                                        {{ showError($errors,'featured') }}
+                                        <div class="form-group">
+                                            <label>Trạng thái</label>
+                                            <select name="state" class="form-control">
+                                                <option value="1">Còn hàng</option>
+                                                <option value="0">Hết hàng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {{ showError($errors,'state') }}
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Ảnh sản phẩm</label>
+                                            <input id="img" type="file" name="img" class="form-control hidden"
+                                                onchange="changeImg(this)">
+                                            <img id="avatar" class="thumbnail" width="100%" height="350px" src="img/import-img.png">
+                                        </div>
+                                        {{ showError($errors,'img') }}
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Thông tin</label>
+                                            <textarea name="info" style="width: 100%;height: 100px;"></textarea>
+                                        </div>
+                                        </div>
+                                        {{ showError($errors,'info') }}
                                  
                                     
                                     </div>

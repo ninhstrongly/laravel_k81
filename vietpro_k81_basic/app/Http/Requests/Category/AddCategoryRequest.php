@@ -24,7 +24,7 @@ class AddCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:category'
+            'name'=>'required|unique:category',
         ];
     }
     public function message(){

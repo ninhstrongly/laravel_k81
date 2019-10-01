@@ -29,7 +29,7 @@ class CheckoutRequest extends FormRequest
             'phone'=>'required|min:7|max:11'
         ];
     }
-    public function FunctionName(Type $var = null)
+    public function messages()
     {
         return[
             'full.required'=>'Tên không được để trống',

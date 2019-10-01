@@ -10,6 +10,30 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::group(['prefix' => 'schema'], function () {
+    //======== CREATE USER ===============
+    Route::get('create_user', function () {
+        Schema::create('users',function($table){
+            $table->increments('id');
+           
+            $table->string('full');
+            $table->string('address');
+            $table->string('phone');
+            $table->decimal('total',18);
+            $table->tinyInteger('state')->unsigned();
+            $table->timestamps();
+        });
+    });
+});
+
+
+View::composer(['*'],function($view){
+    $categories*App\Models\Category::all();
+    $view->with('categories',$categories);
+});
+
+
 //==============> FONT - END <=================
 //==============> Group Route Cart <=================
 Route::group(['prefix' => 'cart'], function () {

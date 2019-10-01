@@ -21,33 +21,31 @@
                                         <div class="col-md-8 col-lg-8 col-lg-offset-2">
                                          
                                             <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="text" name="email" class="form-control">
-                                              <div class="alert alert-danger" role="alert">
-                                                  <strong>email đã tồn tại!</strong>
-                                              </div>
+                                            <label>Email</label>
+                                            <input type="text" name="email" class="form-control">
+                                                    {{ showError($errors,'email') }}
                                             </div>
-                                            {{ showError($errors,'email') }}}
+                                            
                                             <div class="form-group">
                                                 <label>password</label>
                                                 <input type="text" name="password" class="form-control">
                                             </div>
-                                            {{ showError($errors,'password') }}}
+                                            {{ showError($errors,'password') }}
                                             <div class="form-group">
                                                 <label>Full name</label>
                                                 <input type="full" name="full" class="form-control">
                                             </div>
-                                            {{ showError($errors,'full') }}}
+                                            {{ showError($errors,'full') }}
                                             <div class="form-group">
                                                 <label>Address</label>
                                                 <input type="address" name="address" class="form-control">
                                             </div>
-                                            {{ showError($errors,'address') }}}
+                                            {{ showError($errors,'address') }}
                                             <div class="form-group">
                                                 <label>Phone</label>
                                                 <input type="phone" name="phone" class="form-control">
                                             </div>
-                                            {{ showError($errors,'phone') }}}
+                                            {{ showError($errors,'phone') }}
                                             <div class="form-group">
                                                 <label>Level</label>
                                                 <select name="level" class="form-control">
@@ -55,7 +53,7 @@
                                                     <option selected value="2">user</option>
                                                 </select>
                                             </div>
-                                            {{ showError($errors,'level') }}}
+                                            {{ showError($errors,'level') }}
                                         </div>
                                         <div class="row">
                                             <div class="col-md-8 col-lg-8 col-lg-offset-2 text-right">

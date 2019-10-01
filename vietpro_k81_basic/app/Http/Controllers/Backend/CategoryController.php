@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Category\AddCategoryRequest;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Category\AddCategoryRequest;
+
 
 class CategoryController extends Controller
 {
@@ -19,6 +20,7 @@ class CategoryController extends Controller
     public function getEditCategory(){
         return view('backend.category.editcategory');
     }
-
+  
+    
 
 }
