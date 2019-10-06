@@ -10,29 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::group(['prefix' => 'schema'], function () {
-    //======== CREATE USER ===============
-    Route::get('create_user', function () {
-        Schema::create('users',function($table){
-            $table->increments('id');
-           
-            $table->string('full');
-            $table->string('address');
-            $table->string('phone');
-            $table->decimal('total',18);
-            $table->tinyInteger('state')->unsigned();
-            $table->timestamps();
-        });
-    });
+//=============COMPOSER==================
+View::composer(['*'], function($view) {
+    $testview = App\Model\Product::all();
+    $view->with('testview', $testview);
 });
-
-
-View::composer(['*'],function($view){
-    $categories*App\Models\Category::all();
-    $view->with('categories',$categories);
-});
-
 
 //==============> FONT - END <=================
 //==============> Group Route Cart <=================
@@ -65,11 +47,12 @@ Route::get('','Fontend\HomeController@getIndex');
 
 //==============> BACK - END <=================
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
     Route::get('login','Backend\LoginController@getLogin' );
-    Route::post('login','Backend\LoginController@postLogin');
+    Route::get('logout','Backend\LoginController@getLogout' );
 
     Route::get('', 'Backend\IndexController@getIndex');
+    
     //==============> Category <=================
     Route::group(['prefix' => 'category'], function () {
 
@@ -110,3 +93,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
