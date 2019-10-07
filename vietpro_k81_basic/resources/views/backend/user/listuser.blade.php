@@ -28,11 +28,28 @@
 					<div class="panel-body">
 						<div class="bootstrap-table">
 							<div class="table-responsive">
-								<div class="alert bg-success" role="alert">
-									<svg class="glyph stroked checkmark">
-										<use xlink:href="#stroked-checkmark"></use>
-									</svg>Đã thêm thành công<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-								</div>
+									
+								@if(session('add_user'))
+									<div class="alert bg-success" role="alert">
+										<svg class="glyph stroked checkmark">
+											<use xlink:href="#stroked-checkmark"></use>
+										</svg>{{ session('add_user') }}<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+									</div>
+								@endif
+								@if(session('edit_user'))
+									<div class="alert bg-success" role="alert">
+										<svg class="glyph stroked checkmark">
+											<use xlink:href="#stroked-checkmark"></use>
+										</svg>{{ session('edit_user') }}<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+									</div>
+								@endif
+								@if(session('del_user'))
+									<div class="alert bg-success" role="alert">
+										<svg class="glyph stroked checkmark">
+											<use xlink:href="#stroked-checkmark"></use>
+										</svg>{{ session('del_user') }}<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+									</div>
+								@endif
 								<a href="/admin/user/add" class="btn btn-primary">Thêm Thành viên</a>
 								<table class="table table-bordered" style="margin-top:20px;">
 
@@ -47,34 +64,23 @@
 											<th width='18%'>Tùy chọn</th>
 										</tr>
 									</thead>
+									@foreach($users as $row)
 									<tbody>
-									
-										<tr>
-											<td>1</td>
-											<td>Admin@gmail.com</td>
-											<td>Nguyễn thế phúc</td>
-											<td>Thường tín</td>
-                                            <td>0356653300</td>
-                                            <td>1</td>
-											<td>
-												<a href="#" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-												<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
-											</td>
-                                        </tr>
                                         <tr>
-											<td>1</td>
-											<td>Admin@gmail.com</td>
-											<td>Nguyễn thế phúc</td>
-											<td>Thường tín</td>
-                                            <td>0356653300</td>
-                                            <td>1</td>
+											<td>{{ $row->id }}</td>
+											<td>{{ $row->email }}</td>
+											<td>{{ $row->full }}</td>
+											<td>{{ $row->address }}</td>
+                                            <td>{{ $row->phone }}</td>
+                                            <td>{{ $row->level }}</td>
 											<td>
-												<a href="#" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-												<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
+												<a href="/admin/user/edit/{{ $row->id }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
+												<a href="/admin/user/del/{{ $row->id }}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
 											</td>
 										</tr>
 								
 									</tbody>
+									@endforeach
 								</table>
 								<div align='right'>
 									<ul class="pagination">

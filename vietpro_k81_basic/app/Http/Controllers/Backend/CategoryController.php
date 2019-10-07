@@ -37,9 +37,6 @@ class CategoryController extends Controller
     }
     public function postEditCategory($id,EditCategoryRequest $r){
         $ctg = Category::find($id);
-        if ( $ctg->name = $r->name) {
-            return redirect()->back()->with('coincide_category','Danh mục đã tồn tại');
-        }
         $ctg->name = $r->name;
         $ctg->slug = str_slug($r->name);
         $ctg->parent = $r->parent;
@@ -47,5 +44,12 @@ class CategoryController extends Controller
         return redirect()->back()->with('edit_category','Sửa danh mục thành công');
     }
     
-
+    public function delCategory($id)
+    {
+        if($data['category'] = Category::find($id)->delete()){
+            return redirect('/admin/category/')->with('del_category','Xóa danh mục thành công',$data);
+        }
+        
+        
+    }
 }

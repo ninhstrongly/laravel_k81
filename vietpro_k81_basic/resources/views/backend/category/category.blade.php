@@ -50,6 +50,14 @@
 									</svg> {{ session('false_category') }} <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
 								</div>	
 							@endif()
+							@if(session('del_category'))
+								<div class="alert bg-success" role="alert">
+									<svg class="glyph stroked checkmark">
+										<use xlink:href="#stroked-checkmark"></use>
+									</svg> {{ session('del_category') }} <a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+								</div>	
+							@endif()
+							
 							@if(session('add_category'))
 								<div class="alert bg-success" role="alert">
 									<svg class="glyph stroked checkmark">

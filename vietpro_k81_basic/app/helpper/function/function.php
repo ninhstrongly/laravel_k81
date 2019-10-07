@@ -28,7 +28,7 @@ function ShowCategory($category,$parent,$shift){
         <div class="item-menu"><span>'.$shift.$value['name'].'</span>
         <div class="category-fix">
             <a class="btn-category btn-primary" href="/admin/category/edit/'.$value['id'].'"><i class="fa fa-edit"></i></a>
-            <a class="btn-category btn-danger" href="#"><i class="fas fa-times"></i></i></a>
+            <a class="btn-category btn-danger" href="/admin/category/del/'.$value['id'].'"><i class="fas fa-times"></i></i></a>
         </div>
         </div>';
 		ShowCategory($category,$value['id'],$shift."----|");

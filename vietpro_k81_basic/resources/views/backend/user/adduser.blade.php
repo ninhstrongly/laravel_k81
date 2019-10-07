@@ -46,6 +46,7 @@
                                                 <input type="phone" name="phone" class="form-control">
                                             </div>
                                             {{ showError($errors,'phone') }}
+                                            
                                             <div class="form-group">
                                                 <label>Level</label>
                                                 <select name="level" class="form-control">
@@ -53,6 +54,7 @@
                                                     <option selected value="2">user</option>
                                                 </select>
                                             </div>
+                                            
                                             {{ showError($errors,'level') }}
                                         </div>
                                         <div class="row">

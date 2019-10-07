@@ -64,8 +64,6 @@ Route::get('','Fontend\HomeController@getIndex');
 
 //==============> BACK - END <=================
     
-    
-
 Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
 
     Route::get('login','Backend\LoginController@getLogin' );
@@ -81,6 +79,8 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
 
         Route::get('edit/{id}', 'Backend\CategoryController@getEditCategory');
         Route::post('edit/{id}', 'Backend\CategoryController@postEditCategory');
+
+        Route::get('del/{id}','Backend\CategoryController@delCategory');
     });
     //==============> Oder <=================
     Route::group(['prefix' => 'order'], function () {
@@ -104,7 +104,10 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
         Route::get('add', 'Backend\UserController@getAddUser');
         Route::post('add', 'Backend\UserController@postAddUser');
 
-        Route::get('edit', 'Backend\UserController@getEditUser');
+        Route::get('edit/{id}', 'Backend\UserController@getEditUser');
+        Route::post('edit/{id}', 'Backend\UserController@postEditUser');
+
+        Route::get('del/{id}','Backend\UserController@delUser');
     });
 });
 
