@@ -10,6 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//=============QUERY BUIDER==================
+Route::group(['prefix' => 'query'], function () {
+    Route::get('get', function () {
+        $user = DB::table('users')->get();
+        dd($user[0]);
+    });
+    Route::get('first', function () {
+        $user = DB::table('users')->skip(1)->take(3)->get();
+        dd($user);
+    });
+    Route::get('where', function () {
+        $user = DB::table('users')->where('id','>',1)->where('id','<',5)->orderBy('id','desc')->get();
+        dd($user);
+    });
+
+});
+
 //=============COMPOSER==================
 View::composer(['*'], function($view) {
     $testview = App\Model\Product::all();
@@ -19,13 +36,13 @@ View::composer(['*'], function($view) {
 //==============> FONT - END <=================
 //==============> Group Route Cart <=================
 Route::group(['prefix' => 'cart'], function () {
-    Route::get('cart','Fontend\CartController@getCart');
+    Route::get('','Fontend\CartController@getCart');
 });
 
 //==============> Group Route Checkout <=================
 Route::group(['prefix' => 'checkout'], function () {
-    Route::get('checkout','Fontend\CheckoutController@getCheckout');
-    Route::post('checkout','Fontend\CheckoutController@postCheckout');
+    Route::get('','Fontend\CheckoutController@getCheckout');
+    Route::post('','Fontend\CheckoutController@postCheckout');
 
     Route::get('complete','Fontend\CheckoutController@getComplete');
 });
@@ -46,11 +63,14 @@ Route::get('','Fontend\HomeController@getIndex');
 
 
 //==============> BACK - END <=================
+    
+    
 
 Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
-    Route::get('login','Backend\LoginController@getLogin' );
-    Route::get('logout','Backend\LoginController@getLogout' );
 
+    Route::get('login','Backend\LoginController@getLogin' );
+    Route::get('logout','Backend\IndexController@getLogout' );
+    
     Route::get('', 'Backend\IndexController@getIndex');
     
     //==============> Category <=================
@@ -59,7 +79,8 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
         Route::get('', 'Backend\CategoryController@getCategory');
         Route::post('', 'Backend\CategoryController@postCategory');
 
-        Route::get('edit', 'Backend\CategoryController@getEditCategory');
+        Route::get('edit/{id}', 'Backend\CategoryController@getEditCategory');
+        Route::post('edit/{id}', 'Backend\CategoryController@postEditCategory');
     });
     //==============> Oder <=================
     Route::group(['prefix' => 'order'], function () {
@@ -88,12 +109,5 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
 });
 
 
-
-
-
-
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

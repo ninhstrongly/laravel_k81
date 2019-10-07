@@ -11,9 +11,4 @@ class LoginController extends Controller
     public function getLogin(){
         return View('backend.login');
     }
-    public function postLogin(request $r){
-        
-    }
-    
-    
 }

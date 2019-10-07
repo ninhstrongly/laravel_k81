@@ -12,8 +12,7 @@ class IndexController extends Controller
     }
     public function getLogout()
     {
-        if (Auth::logout()) {
-            return redirect('login');
-        }
+        Auth::logout();
+        return redirect('/login');
     }
 }
