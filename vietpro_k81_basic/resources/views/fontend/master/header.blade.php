@@ -19,7 +19,7 @@
 								</li>
 								<li><a href="/home/about">Giới thiệu</a></li>
 								<li><a href="/home/contact">Liên hệ</a></li>
-								<li><a href="/cart><i class="icon-shopping-cart"></i> Giỏ hàng [0]</a></li>
+								<li><a href="/cart><i class="icon-shopping-cart"></i> Giỏ hàng[{{ Cart::count() }}] </a></li>
 							</ul>
 						</div>
 					</div>

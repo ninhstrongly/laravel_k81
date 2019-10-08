@@ -47,7 +47,8 @@
 									<img class="img-thumbnail cart-img" src="/backend/img/{{ $row->options->img }}">
 								</div>
 								<div class="detail-buy">
-									<h4>Mã : {{ $row->code }}</h4>
+									<h4>Mã :{{ $row->id }}</h4>
+									
 									<h5>{{ $row->name }}</h5>
 								</div>
 							</div>
@@ -91,7 +92,7 @@
 										</div>
 										<div class="grand-total">
 											<p><span><strong>Tổng cộng:</strong></span> <span>{{ $total }} đ</span></p>
-											<a href="checkout.html" class="btn btn-primary">Thanh toán <i
+											<a href="/checkout" class="btn btn-primary">Thanh toán <i
 													class="icon-arrow-right-circle"></i></a>
 										</div>
 									</div>

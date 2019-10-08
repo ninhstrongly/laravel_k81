@@ -36,8 +36,11 @@ View::composer(['*'], function($view) {
 //==============> FONT - END <=================
 //==============> Group Route Cart <=================
 Route::group(['prefix' => 'cart'], function () {
+
     Route::get('','Fontend\CartController@getCart');
+
     Route::get('add','Fontend\CartController@AddCart');
+
     Route::get('update/{rowId}/{qty}','Fontend\CartController@UpdateCart');
     Route::get('del/{rowId}','Fontend\CartController@DelCart');
 });
@@ -47,7 +50,7 @@ Route::group(['prefix' => 'checkout'], function () {
     Route::get('','Fontend\CheckoutController@getCheckout');
     Route::post('','Fontend\CheckoutController@postCheckout');
 
-    Route::get('complete','Fontend\CheckoutController@getComplete');
+    Route::get('complete/{order_id}','Fontend\CheckoutController@getComplete');
 });
 
 //==============> Group Route Product <=================

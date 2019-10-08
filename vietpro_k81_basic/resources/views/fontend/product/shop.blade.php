@@ -14,7 +14,7 @@
 	
 											<div class="cart">
 												<p>
-													<span class="addtocart"><a href="/cart/add?prd_id={{ $row->id }}"><i class="icon-shopping-cart"></i></a></span>
+													<span class="addtocart"><a href="/cart/add?id_prd={{ $row->id }}"><i class="icon-shopping-cart"></i></a></span>
 													<span><a href="/product/{{ $row->slug }}.html"><i class="icon-eye"></i></a></span>
 												</p>
 											</div>
