@@ -20,7 +20,13 @@
 					<div class="panel-body">
 						<div class="bootstrap-table">
 							<div class="table-responsive">
-
+								@if(session('order_success'))
+								<div class="alert bg-success" role="alert">
+									<svg class="glyph stroked checkmark">
+										<use xlink:href="#stroked-checkmark"></use>
+									</svg>{{ session('order_success') }}<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+								</div>
+								@endif
 								<a href="/admin/order/processed" class="btn btn-success">Đơn đã xử lý</a>
 								<table class="table table-bordered" style="margin-top:20px;">
 									<thead>
@@ -33,23 +39,28 @@
 											<th>Xử lý</th>
 										</tr>
 									</thead>
+									@foreach($order as $row)
 									<tbody>
 										<tr>
-											<td>1</td>
-											<td>Nguyễn Thế Phúc</td>
-											<td>0356653300</td>
-											<td>Thường tín</td>
+											<td>{{ $row->id }}</td>
+											<td>{{ $row->full }}</td>
+											<td>{{ $row->phone }}</td>
+											<td>{{ $row->address }}</td>
 											<td>
-												<a href="detailorder.html" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>Xử lý</a>
+												<a href="/admin/order/detail/{{ $row->id }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>Xử lý</a>
 
 											</td>
 										</tr>
 
 									</tbody>
+									@endforeach
 								</table>
 							</div>
 						</div>
 						<div class="clearfix"></div>
+						<div align="right">
+								{{ $order->links() }}
+						</div>
 					</div>
 				</div>
 			</div>

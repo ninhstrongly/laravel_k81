@@ -37,6 +37,9 @@ View::composer(['*'], function($view) {
 //==============> Group Route Cart <=================
 Route::group(['prefix' => 'cart'], function () {
     Route::get('','Fontend\CartController@getCart');
+    Route::get('add','Fontend\CartController@AddCart');
+    Route::get('update/{rowId}/{qty}','Fontend\CartController@UpdateCart');
+    Route::get('del/{rowId}','Fontend\CartController@DelCart');
 });
 
 //==============> Group Route Checkout <=================
@@ -49,8 +52,8 @@ Route::group(['prefix' => 'checkout'], function () {
 
 //==============> Group Route Product <=================
 Route::group(['prefix' => 'product'], function () {
-    Route::get('detail','Fontend\ProductController@getDetail');
     Route::get('shop','Fontend\ProductController@getShop');
+    Route::get('{slug_prd}.html','Fontend\ProductController@getDetail');
 });
 
 //==============> Group Route Home <=================
@@ -59,6 +62,8 @@ Route::group(['prefix' => 'home'], function () {
     Route::get('contact','Fontend\HomeController@getContact');
 });
 Route::get('','Fontend\HomeController@getIndex');
+Route::get('{slug}.html','Fontend\HomeController@getPrdCate');
+Route::get('finter','Fontend\HomeController@getFinter');
 
 
 
@@ -85,8 +90,12 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
     //==============> Oder <=================
     Route::group(['prefix' => 'order'], function () {
         Route::get('', 'Backend\OrderController@getOrder');
-        Route::get('detail', 'Backend\OrderController@getDetailOrder');
+        
         Route::get('processed', 'Backend\OrderController@getProcessed');
+        Route::get('detail/{id}', 'Backend\OrderController@getDetailOrder');
+
+        Route::get('paid/{id}', 'Backend\OrderController@paid');
+
     });
     //==============> Product <=================
     Route::group(['prefix' => 'product'], function () {
@@ -95,7 +104,10 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
         Route::get('add', 'Backend\ProductController@getAddProduct');
         Route::post('add', 'Backend\ProductController@postAddProduct');
 
-        Route::get('edit', 'Backend\ProductController@getEditProduct');
+        Route::get('edit/{id}', 'Backend\ProductController@getEditProduct');
+        Route::post('edit/{id}', 'Backend\ProductController@postEditProduct');
+
+        Route::get('del/{id}','Backend\ProductController@delEditProduct');
     });
     //==============> User <=================
     Route::group(['prefix' => 'user'], function () {
