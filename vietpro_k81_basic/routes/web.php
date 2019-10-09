@@ -63,11 +63,15 @@ Route::group(['prefix' => 'product'], function () {
 Route::group(['prefix' => 'home'], function () {
     Route::get('about','Fontend\HomeController@getAbout');
     Route::get('contact','Fontend\HomeController@getContact');
+    Route::get('reference','Fontend\HomeController@getReference');
+    Route::post('reference','Fontend\HomeController@postReference');
 });
 Route::get('','Fontend\HomeController@getIndex');
 Route::get('{slug}.html','Fontend\HomeController@getPrdCate');
 Route::get('finter','Fontend\HomeController@getFinter');
+Route::get('search','Fontend\HomeController@getSearch')->name('search');
 
+//==============> LARAVEL IMPRORT EXCEL <=================
 
 
 //==============> BACK - END <=================

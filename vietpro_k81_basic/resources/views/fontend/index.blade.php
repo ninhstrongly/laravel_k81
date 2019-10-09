@@ -4,38 +4,7 @@
 		<div id="colorlib-featured-product">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
-						<a href="shop.html" class="f-product-1" style="background-image: url(images/i1.jpg);">
-							<div class="desc">
-								<h2>Mẫu <br>cho <br>Nam</h2>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-6">
-								<a href="" class="f-product-2" style="background-image: url(images/i2.jpg);">
-									<div class="desc">
-										<h2> <br>Váy <br> Mới</h2>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-6">
-								<a href="" class="f-product-2" style="background-image: url(images/i3.jpg);">
-									<div class="desc">
-										<h2>Sale <br>20% <br>off</h2>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-12">
-								<a href="" class="f-product-2" style="background-image: url(images/i4.jpg);">
-									<div class="desc">
-										<h2>Giầy <br>cho <br>Nam</h2>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -89,14 +58,14 @@
 										<p>
 											<span class="addtocart"><a href="/cart/add?id_prd={{ $row->id }}"><i
 														class="icon-shopping-cart"></i></a></span>
-											<span><a href="detail.html"><i class="icon-eye"></i></a></span>
+											<span><a href="/product/{{ $row->slug }}.html"><i class="icon-eye"></i></a></span>
 	
 	
 										</p>
 									</div>
 								</div>
 								<div class="desc">
-									<h3><a href="detail.html">{{ $row->name }}</a></h3>
+									<h3><a href="/product/{{ $row->slug }}.html">{{ $row->name }}</a></h3>
 									<p class="price"><span>{{ number_format($row->price,0,'','.') }} đ</span></p>
 								</div>
 							</div>
@@ -124,14 +93,14 @@
 									<p>
 										<span class="addtocart"><a href="/cart/add?id_prd={{ $row->id }}"><i
 													class="icon-shopping-cart"></i></a></span>
-										<span><a href="detail.html"><i class="icon-eye"></i></a></span>
+										<span><a href="/product/{{ $row->slug }}.html"><i class="icon-eye"></i></a></span>
 
 
 									</p>
 								</div>
 							</div>
 							<div class="desc">
-								<h3><a href="detail.html">{{ $row->name }}</a></h3>
+								<h3><a href="/product/{{ $row->slug }}.html">{{ $row->name }}</a></h3>
 								<p class="price"><span>{{ number_format($row->price,0,'','.') }} đ</span></p>
 							</div>
 						</div>
