@@ -12,7 +12,7 @@
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li class="active"><a href="/">Trang chủ</a></li>
+						<li class="active"><a href="/">{{ $testview }}</a></li>
 						<li class="has-dropdown">
 							<a href="/product/shop">Cửa hàng</a>
 							<ul class="dropdown">

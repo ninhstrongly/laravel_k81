@@ -1,6 +1,10 @@
 @extends('backend.master.master')
 @section('content')
 @section('title','List Product')
+	<style>
+		
+		
+	</style>
 	<!--main-->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -51,6 +55,29 @@
 								@endif
 								
 								<a href="/admin/product/add" class="btn btn-primary">Thêm sản phẩm</a>
+								
+								<div id="import">
+									<div>
+										<div class="card-body" style="float:right">
+											<div>
+													{!! Form::open(['method' => 'POST', 'url' => 'import', 'files' => true]) !!}
+											</div>
+											
+												
+														{!! Form::file('file')  !!}
+														<a class="btn btn-info" href="{{ url('export') }}"> 
+														 Export File</a>
+														{!!  Form::submit('Import File') !!}
+												
+												
+												
+											{!! Form::close() !!}
+										</div>
+									</div>
+								</div>
+								
+
+
 								<table class="table table-bordered" style="margin-top:20px;">
 
 									<thead>

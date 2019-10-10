@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Requests\Product\{AddProductRequest,EditProductRequest};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Product;
-use App\Model\Category;
+use App\Model\{Product,Category};
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ImportProduct;
+use App\Exports\ExportProduct;
 
 
 class ProductController extends Controller
@@ -77,6 +79,21 @@ class ProductController extends Controller
     {
         $prd = Product::find($id)->delete();
         return redirect('/admin/product/')->with('del_success','Xóa sản phẩm thành công');
+    }
+    public function test()
+    {
+        return view('import-recipe');
+    }
+  
+    public function import()
+    {
+        Excel::import(new ImportProduct, request()->file('file'));
+
+        return back();
+    }
+    public function export() 
+    {
+        return Excel::download(new ExportProduct, 'recipes.xlsx');
     }
     
 }

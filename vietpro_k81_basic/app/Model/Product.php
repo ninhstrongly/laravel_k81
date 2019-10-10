@@ -11,4 +11,16 @@ class Product extends Model
     {
         return $this->belongsTo('App\Model\Category', 'category_id', 'id');
     }
+    protected $fillable = [
+        'code',
+        'name',
+        'slug',
+        'price',
+        'featured',
+        'state',
+        'info',
+        'describe',
+        'img',
+        'category_id',
+    ];
 }

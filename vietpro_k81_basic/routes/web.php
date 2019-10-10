@@ -72,6 +72,8 @@ Route::get('finter','Fontend\HomeController@getFinter');
 Route::get('search','Fontend\HomeController@getSearch')->name('search');
 
 //==============> LARAVEL IMPRORT EXCEL <=================
+Route::get('export', 'Backend\ProductController@export');
+Route::post('import','Backend\ProductController@import');
 
 
 //==============> BACK - END <=================
@@ -130,6 +132,16 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
     });
 });
 
+Route::get('ninh', function () {
+    $content = 1;
+    $type =2;
+    return response($content)
+            ->withHeaders([
+                'Content-Type' => $type,
+                'X-Header-One' => 'Header Value',
+                'X-Header-Two' => 'Header Value',
+            ]);
+});
 
 Auth::routes();
 
