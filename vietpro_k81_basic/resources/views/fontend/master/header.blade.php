@@ -5,14 +5,14 @@
 				<div class="col-xs-2">
 					<div id="colorlib-logo"><a href="/"><img src="images/logo.png" alt="" style="width: 300px;height: 50px;"></a></div>
 				</div>
-				<div class="col-xs-2" ">
+				<div class="col-xs-2">
 					<div style="margin:0px 0px 0px 130px">
 						<input  id="search" name="search" type="text" style="border:1px solid gray;height: 30px;width:200px;margin-top:8px;" placeholder="Search">
 					</div>
 				</div>
 				<div class="col-xs-8 text-right menu-1">
 					<ul>
-						<li class="active"><a href="/">{{ $testview }}</a></li>
+						<li class="active"><a href="/">Trang chủ</a></li>
 						<li class="has-dropdown">
 							<a href="/product/shop">Cửa hàng</a>
 							<ul class="dropdown">

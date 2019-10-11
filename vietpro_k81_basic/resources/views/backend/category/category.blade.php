@@ -73,6 +73,10 @@
 								{{ ShowCategory($category,0,'') }}
 						</div>
 					</div>
+					<h2 style="font-weight:bold">WMENU-BUIDER</h2>
+					{!! Menu::render() !!}
+					
+					{!! Menu::scripts() !!}
 				</div>
 			</div>
 		</div>
