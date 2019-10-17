@@ -120,8 +120,12 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
     });
     //==============> User <=================
     Route::group(['prefix' => 'user'], function () {
-        Route::get('', 'Backend\UserController@getListUser');
-
+        Route::get('/',[
+            'as'=>'user.index',
+            'uses'=>'Backend\UserController@getListUser',
+            'middleware'=>'checkMiddleware:user-list',
+        ]);
+        
         Route::get('add', 'Backend\UserController@getAddUser');
         Route::post('add', 'Backend\UserController@postAddUser');
 
@@ -141,6 +145,31 @@ Route::get('ninh', function () {
                 'X-Header-One' => 'Header Value',
                 'X-Header-Two' => 'Header Value',
             ]);
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::prefix('admin/role')->group(function(){
+        Route::get('/',[
+            'as'=>'role.index',
+            'uses'=>'Backend\RoleController@index',
+            'middleware'=>'checkMiddleware:role-list',
+        ]);
+        Route::get('/create',[
+            'as'=>'role.add',
+            'uses'=>'Backend\RoleController@getCreate',
+            'middleware'=>'checkMiddleware:role-add',
+        ]);
+        Route::post('/create',[
+            'as'=>'role.store',
+            'uses'=>'Backend\RoleController@postCreate',
+            'middleware'=>'checkMiddleware:role-add',
+        ]);
+
+        Route::get('/edit/{id}','Backend\RoleController@getEdit')->name('role.edit');
+        Route::post('/edit/{id}','Backend\RoleController@postEdit')->name('role.edit');
+
+        Route::get('/del/{id}','Backend\RoleController@delete')->name('role.del');
+    });
 });
 
 Auth::routes();

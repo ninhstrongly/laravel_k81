@@ -10,6 +10,7 @@
         <li><a href="/admin/order"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Đơn hàng</a></li>
         <li role="presentation" class="divider"></li>
         <li><a href="/admin/user"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Quản lý thành viên</a></li>
+        <li><a href="/admin/role"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Quản lý quyền</a></li>
     
     </ul>
 

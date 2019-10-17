@@ -60,7 +60,6 @@
 											<th>Full</th>
 											<th>Address</th>
                                             <th>Phone</th>
-                                            <th>Level</th>
 											<th width='18%'>Tùy chọn</th>
 										</tr>
 									</thead>
@@ -72,10 +71,9 @@
 											<td>{{ $row->full }}</td>
 											<td>{{ $row->address }}</td>
                                             <td>{{ $row->phone }}</td>
-                                            <td>{{ $row->level }}</td>
-											<td>
-												<a href="/admin/user/edit/{{ $row->id }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-												<a href="/admin/user/del/{{ $row->id }}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
+											<td width='20%'>
+												<a href="/admin/user/edit/{{ $row->id }}" class="btn btn-warning"><i class="fa" aria-hidden="true"></i> Sửa</a>
+												<a href="/admin/user/del/{{ $row->id }}" class="btn btn-danger"><i class="fa " aria-hidden="true"></i> Xóa</a>
 											</td>
 										</tr>
 								
@@ -84,11 +82,7 @@
 								</table>
 								<div align='right'>
 									<ul class="pagination">
-										<li class="page-item"><a class="page-link" href="#">Trở lại</a></li>
-										<li class="page-item"><a class="page-link" href="#">1</a></li>
-										<li class="page-item"><a class="page-link" href="#">2</a></li>
-										<li class="page-item"><a class="page-link" href="#">3</a></li>
-										<li class="page-item"><a class="page-link" href="#">tiếp theo</a></li>
+										{{ $users->links() }}
 									</ul>
 								</div>
 							</div>

@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>password</label>
-                                                <input type="text" name="password" class="form-control" value="{{ $users->password }}">
+                                                <input type="text" name="password" class="form-control" value="">
                                                 {{ showError($errors,'password') }}
                                             </div>
                                             <div class="form-group">
@@ -47,24 +47,18 @@
                                                 {{ showError($errors,'phone') }}
                                             </div>
                                           
-                                            <div class="form-group">
-                                                <label>Level</label>
-                                                <select name="level" class="form-control" value="">
-                                                    <option value="1"
-                                                    @if($users->level == 1 )
-                                                            {{ 'selected' }}
-                                                    @endif >
-                                                    admin
-                                                    </option>
-                                                    <option 
-                                                    
-                                                    @if($users->level == 2 )
-                                                        {{ 'selected' }}
-                                                    @endif 
-                                                    
-                                                    value="2">user</option>
-                                                </select>
-                                            </div>
+                                            <select class="form-control" name="roles[]" multiple="multiple">
+                                                @foreach($listRole as $row)
+                                    
+                                                <option 
+                                                    {{ $listRoleAll->contains($row->id) ? 'selected' : '' }}
+                                                    value="{{ $row->id }}">
+                                                    {{ $row->display_name }}
+                                                </option>
+                                    
+                                                @endforeach
+                                                
+                                            </select>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-8 col-lg-8 col-lg-offset-2 text-right">

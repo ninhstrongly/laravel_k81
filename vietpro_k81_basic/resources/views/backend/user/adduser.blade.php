@@ -28,7 +28,7 @@
                                             
                                             <div class="form-group">
                                                 <label>password</label>
-                                                <input type="text" name="password" class="form-control">
+                                                <input type="password" name="password" class="form-control">
                                             </div>
                                             {{ showError($errors,'password') }}
                                             <div class="form-group">
@@ -47,15 +47,11 @@
                                             </div>
                                             {{ showError($errors,'phone') }}
                                             
-                                            <div class="form-group">
-                                                <label>Level</label>
-                                                <select name="level" class="form-control">
-                                                    <option value="1">admin</option>
-                                                    <option selected value="2">user</option>
-                                                </select>
-                                            </div>
-                                            
-                                            {{ showError($errors,'level') }}
+                                            <select class="form-control" name="roles[]" multiple="multiple">
+                                                @foreach($listRole as $row)
+                                                <option value="{{ $row->id }}">{{ $row->display_name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-8 col-lg-8 col-lg-offset-2 text-right">
