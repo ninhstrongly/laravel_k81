@@ -20,8 +20,6 @@ class UserController extends Controller
     }
 
     public function postAddUser(AddUserRequest $r){
-        try{
-            DB::beginTransaction();
             $listUser = new Users;
             $listUser->email = $r->email;
             $listUser->password = bcrypt($r->password);
@@ -30,11 +28,7 @@ class UserController extends Controller
             $listUser->phone = $r->phone;
             $listUser->save();
             $listUser->roles()->attach($r->roles);
-            DB::commit();
             return redirect('/admin/user')->with('add_user','Thêm thành viên thành công');
-        }catch(\Exception $exception){
-            DB::rollBack();
-        }
     }
     public function getEditUser($id){
         $users = Users::find($id);

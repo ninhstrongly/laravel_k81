@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDemoCoreTable extends Migration
+class CreateRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateDemoCoreTable extends Migration
      */
     public function up()
     {
-        Schema::create('demo_core', function (Blueprint $table) {
+        Schema::create('_role', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('test_core');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateDemoCoreTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('demo_core');
+        Schema::dropIfExists('_role');
     }
 }

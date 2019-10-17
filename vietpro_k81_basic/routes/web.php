@@ -108,15 +108,42 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
     });
     //==============> Product <=================
     Route::group(['prefix' => 'product'], function () {
-        Route::get('', 'Backend\ProductController@getListProduct');
+        Route::get('/',[
+            'as'=>'user.index',
+            'uses'=>'Backend\ProductController@getListProduct',
+            'middleware'=>'checkMiddleware:prd-list',
+        ]);
+            
+        Route::get('add',[
+            'as'=>'user.index',
+            'uses'=>'Backend\ProductController@getAddProduct',
+            'middleware'=>'checkMiddleware:prd-add',
+        ]);
+        
+        Route::post('add',[
+            'as'=>'user.index',
+            'uses'=>'Backend\ProductController@postAddProduct',
+            'middleware'=>'checkMiddleware:prd-add',
+        ]);
 
-        Route::get('add', 'Backend\ProductController@getAddProduct');
-        Route::post('add', 'Backend\ProductController@postAddProduct');
+        Route::get('edit/{id}',[
+            'as'=>'user.index',
+            'uses'=>'Backend\ProductController@getEditProduct',
+            'middleware'=>'checkMiddleware:prd-edit',
+        ]);
 
-        Route::get('edit/{id}', 'Backend\ProductController@getEditProduct');
-        Route::post('edit/{id}', 'Backend\ProductController@postEditProduct');
+        Route::post('edit/{id}',[
+            'as'=>'user.index',
+            'uses'=>'Backend\ProductController@postEditProduct',
+            'middleware'=>'checkMiddleware:prd-edit',
+        ]);
 
-        Route::get('del/{id}','Backend\ProductController@delEditProduct');
+        Route::get('del/{id}',[
+            'as'=>'user.index',
+            'uses'=>'Backend\ProductController@delEditProduct',
+            'middleware'=>'checkMiddleware:prd-del',
+        ]);  
+        
     });
     //==============> User <=================
     Route::group(['prefix' => 'user'], function () {
@@ -154,16 +181,9 @@ Route::middleware(['auth'])->group(function(){
             'uses'=>'Backend\RoleController@index',
             'middleware'=>'checkMiddleware:role-list',
         ]);
-        Route::get('/create',[
-            'as'=>'role.add',
-            'uses'=>'Backend\RoleController@getCreate',
-            'middleware'=>'checkMiddleware:role-add',
-        ]);
-        Route::post('/create',[
-            'as'=>'role.store',
-            'uses'=>'Backend\RoleController@postCreate',
-            'middleware'=>'checkMiddleware:role-add',
-        ]);
+        
+        Route::get('/create','Backend\RoleController@getCreate')->name('role.add');
+        Route::post('/create','Backend\RoleController@postCreate')->name('role.store');
 
         Route::get('/edit/{id}','Backend\RoleController@getEdit')->name('role.edit');
         Route::post('/edit/{id}','Backend\RoleController@postEdit')->name('role.edit');
