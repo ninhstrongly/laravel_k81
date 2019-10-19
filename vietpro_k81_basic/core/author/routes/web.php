@@ -1,5 +1,6 @@
 <?php
 
 Route::group(['namespace' => 'Unicorn\Author\Http\Controllers'], function () {
-    Route::get('/demo', 'AuthorController@getIndex');
+    
+    Route::get('/diem', 'AuthorController@getIndex')->middleware('CheckAge');
 });

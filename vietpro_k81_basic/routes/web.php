@@ -33,6 +33,27 @@ View::composer(['*'], function($view) {
     $view->with('testview', $testview);
 });
 
+//============RELATIONSHIP==============
+Route::group(['prefix' => 'relationship'], function () {
+    //===========> 1 VS 1(T) <============
+    Route::get('one-one',function(){
+        return view('relationship');
+    });
+    //===========> 1 VS 1(N) <============
+    Route::get('one-one-n', function () {
+        $info = App\Model\Info::all();
+        return view('relationship',compact('info'));
+    });
+    //===========> 1 VS N <===============
+    Route::get('one-many', function () {
+        return view('relationship');
+    });
+    //===========> N VS N <===============
+    Route::get('many-many', function () {
+        return view('relationship');
+    });
+});
+
 //==============> FONT - END <=================
 //==============> Group Route Cart <=================
 Route::group(['prefix' => 'cart'], function () {
@@ -152,7 +173,7 @@ Route::group(['prefix' => 'admin','middleware'=>'CheckLogin'], function () {
             'uses'=>'Backend\UserController@getListUser',
             'middleware'=>'checkMiddleware:user-list',
         ]);
-        
+        Route::get('/', 'Backend\UserController@getListUser')->name('user.index');
         Route::get('add', 'Backend\UserController@getAddUser');
         Route::post('add', 'Backend\UserController@postAddUser');
 
@@ -179,7 +200,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/',[
             'as'=>'role.index',
             'uses'=>'Backend\RoleController@index',
-            'middleware'=>'checkMiddleware:role-list',
+            //'middleware'=>'checkMiddleware:role-list',
         ]);
         
         Route::get('/create','Backend\RoleController@getCreate')->name('role.add');

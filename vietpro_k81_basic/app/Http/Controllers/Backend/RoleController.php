@@ -40,12 +40,12 @@ class RoleController extends Controller
     public function postEdit(Request $r,$id)
     {
        
-        $role = Role::find($id)->delete();
+        $list = Role::find($id);
 
-        $list = new Role;
+        //$list = new Role;
         $list->permission = json_encode($r->permission);
-        $list->name = $r->name;
-        $list->display_name = $r->display_name;
+        // $list->name = $r->name;
+        // $list->display_name = $r->display_name;
 
         $list->save();
         

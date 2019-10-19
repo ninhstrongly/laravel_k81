@@ -12,4 +12,9 @@ class Users extends Model
     {
         return $this->belongsToMany('App\Model\Role', 'role_user', 'user_id', 'role_id');
     }
+    public function info()
+    {
+        return $this->hasOne('App\Model\Info', 'user_id', 'id');
+    }
+    
 }

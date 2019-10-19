@@ -35,6 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Unicorn\Author\Http\Middleware\CheckAge::class
         ],
 
         'api' => [
@@ -62,6 +63,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'CheckLogin' => \App\Http\Middleware\CheckLogin::class,
         'checkMiddleware' =>\App\Http\Middleware\CheckPermission::class,
+        'CheckAge'=> \Unicorn\Author\Http\Middleware\CheckAge::class
     ];
 
     /**
